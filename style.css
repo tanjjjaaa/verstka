@@ -1,0 +1,178 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #222;
+  background: #f4f4f4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: inline-block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(#000 0 33%, #dd0000 33% 66%, #ffcc00 66%);
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.logo::after {
+  content: "D";
+  position: absolute;
+  top: 9px;
+  left: 13px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+header {
+  background: #ddd;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: #222;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  display: block;
+  flex: 1;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 10px 0 20px;
+}
+
+h2 {
+  margin: 0 0 10px;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+ul, ol {
+  margin: 0 0 10px;
+  padding-left: 25px;
+}
+
+section {
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 20px;
+  overflow: hidden; 
+}
+
+.pic-right {
+  float: right;
+  width: 280px;
+  margin: 0 0 10px 15px;
+}
+
+.pic-left {
+  float: left;
+  width: 270px;
+  margin: 0 15px 10px 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+th, td {
+  border: 1px solid #aaa;
+  padding: 6px;
+  text-align: left;
+}
+
+th {
+  background: #eee;
+}
+
+.important {
+  color: #b00000;
+  font-weight: bold;
+}
+
+
+.test-question {
+  margin-bottom: 15px;
+}
+
+.test-question p {
+  font-weight: bold;
+}
+
+.test-question label {
+  display: block;
+}
+
+.right {
+  color: green;
+}
+
+.wrong {
+  color: #b00000;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#result {
+  font-size: 18px;
+}
+
+footer {
+  background: #ddd;
+  padding: 15px 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .pic-right, .pic-left {
+    float: none;
+    width: 100%;
+    margin: 0 0 10px 0;
+  }
+}

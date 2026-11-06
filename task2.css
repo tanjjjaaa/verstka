@@ -1,0 +1,180 @@
+:root {
+  --scene-size: 200px;
+  --ground: 18px;
+  --fade: 0.3s;
+  --sky: #ffffff;
+  --grass: #7dbb69;
+  --text-color: #1d1d1d;
+}
+
+.page-anim {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scene {
+  position: relative;
+  width: var(--scene-size);
+  height: var(--scene-size);
+  margin: 0;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--sky) 10%, var(--grass));
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.scene img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.hero {
+  position: absolute;
+  bottom: var(--ground);
+  opacity: 0;
+  transition: opacity var(--fade);
+}
+
+.hero-wave {
+  left: 36px;
+  width: 94px;
+  opacity: 1;
+}
+
+.hero-think {
+  left: 45px;
+  width: 94px;
+}
+
+.hero-fall {
+  left: 8px;
+  width: 125px;
+}
+
+.item {
+  position: absolute;
+  bottom: calc(var(--ground) + 4px);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity var(--fade);
+}
+
+.ball-holder {
+  left: 152px;
+  width: 32px;
+  height: 32px;
+}
+
+.ball-holder img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.box-holder {
+  left: 102px;
+  width: 36px;
+  height: 37px;
+}
+
+.box-holder img {
+  position: absolute;
+  left: -105px;
+  top: -148px;
+  width: 205px;
+  height: 205px;
+  max-width: none;
+  transform-origin: 123px 166px;
+}
+
+.caption {
+  position: absolute;
+  margin: 0;
+  font: bold 15px Arial, sans-serif;
+  color: var(--text-color);
+  opacity: 0;
+  transition: opacity var(--fade);
+  pointer-events: none;
+}
+
+.caption-ask {
+  top: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.caption-brick {
+  top: 85px;
+  left: 55px;
+  white-space: nowrap;
+  transform: rotate(-31deg);
+}
+
+.scene:hover .hero-wave  { opacity: 0; }
+.scene:hover .hero-think { opacity: 1; }
+.scene:hover .caption-ask { opacity: 1; }
+
+.scene:hover .ball-holder {
+  opacity: 1;
+  animation: ballArrive 1.1s ease-out forwards;
+}
+
+.scene:hover .box-holder {
+  opacity: 1;
+  animation: boxArrive 0.9s ease-out forwards;
+}
+
+.item:hover img {
+  animation: rotateLoop 0.8s linear infinite;
+}
+
+.scene:active {
+  animation: wobble 0.12s ease-in-out infinite alternate;
+}
+
+.scene:active .hero-think    { opacity: 0; }
+.scene:active .hero-fall     { opacity: 1; }
+.scene:active .caption-ask   { opacity: 0; }
+.scene:active .caption-brick { opacity: 1; }
+.scene:active .ball-holder   { opacity: 0; }
+
+.scene:active .box-holder {
+  animation: boxFly 1s ease-in forwards;
+}
+
+@keyframes ballArrive {
+  0%   { transform: translate(-175px, 10px) rotate(0turn); }
+  30%  { transform: translate(-140px, -125px) rotate(-0.5turn); }
+  60%  { transform: translate(-30px, -140px) rotate(-1turn); }
+  85%  { transform: translate(15px, -45px) rotate(-1.5turn); }
+  100% { transform: translate(0, 0) rotate(-2turn); }
+}
+
+@keyframes boxArrive {
+  0%   { transform: translate(95px, -150px) rotate(0turn); }
+  45%  { transform: translate(55px, 5px) rotate(0.25turn); }
+  75%  { transform: translate(18px, -20px) rotate(0.4turn); }
+  100% { transform: translate(0, 0) rotate(0.5turn); }
+}
+
+@keyframes rotateLoop {
+  from { transform: rotate(0turn); }
+  to   { transform: rotate(1turn); }
+}
+
+@keyframes wobble {
+  from { transform: translateY(1px); }
+  to   { transform: translateY(-2px); }
+}
+
+@keyframes boxFly {
+  0%   { transform: translate(0, 0) rotate(0turn); opacity: 1; }
+  30%  { transform: translate(25px, -65px) rotate(0.3turn); }
+  60%  { transform: translate(55px, -35px) rotate(0.6turn); }
+  100% { transform: translate(125px, -155px) rotate(1turn); opacity: 0; }
+}
